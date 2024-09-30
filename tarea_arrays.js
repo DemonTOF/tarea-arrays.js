@@ -27,6 +27,7 @@ function sumarPares(numeros) {
 // 3.1 Escribe una función llamada `palabrasTerminanConA` que reciba un array de palabras y devuelva `true` si todas terminan con "a", o `false` si al menos una no lo hace.
 function palabrasTerminanConA(palabras) {
     // Tu código aquí
+    // con (palabra.length - 1) tengo la posicion del ultimo caracter de la cadena y asi obtener ese caracter para compararlo con "a"
     const terminaConA = palabras.every(palabra => palabra[palabra.length - 1] === "a")
     return terminaConA
 }
@@ -39,8 +40,8 @@ console.log(palabrasTerminanConA(palabras)) // -> true
 // Busca el índice de la palabra en el array y devuelve todas las palabras después de ese índice en un nuevo array
 function buscaPalabras(words, word) {
     // Tu código aquí
-    const newArray = words.reduce((accumulator, currentWord) => {
-        if(words.indexOf(currentWord) > words.indexOf(word)){
+    const newArray = words.reduce((accumulator, currentWord) => {  // uso el metodo .reduce() para poder acumular los valores del array a partir de la derecha de la cadena word
+        if(words.indexOf(currentWord) > words.indexOf(word)){      // si la posicion de la cadena que se lee es mayor a la posicion de la cadena word entonces ya estiy posicionado donde estan los elementos a la derecha de la cadena word en el array
             return accumulator.concat(currentWord)
         }else{
             return accumulator
@@ -60,7 +61,7 @@ function findJavaScript(matrix) {
     let encontro
     for(let i = 0; i < matrix.length; i++){
         for(let j = 0; j < matrix[i].length; j++){
-            encontro = matrix[i][j] === "JavaScript"
+            encontro = matrix[i][j] === "JavaScript"  // Aqui obtengo la condicion de igualdad para tener la posicion de "JavaScript" en el array
             if(encontro){
                 return [i,j]
             }
@@ -83,8 +84,8 @@ console.log(position); // -> [0, 2]
 // La función debe devolver un array con dos posiciones: el índice del libro con menos páginas y el índice del libro con más páginas.
 function findMinMaxPages(books) {
     // Tu código aquí
-    let posicionMayor = books.indexOf(Math.max(...books))
-    let posicionMenor = books.indexOf(Math.min(...books))
+    let posicionMayor = books.indexOf(Math.max(...books))  // obtengo el valor max del array con Math.max, y con .indexOf obtengo su posicion
+    let posicionMenor = books.indexOf(Math.min(...books))  // obtengo el valor min del array con Math.min, y con .indexOf obtengo su posicion
     return [posicionMenor,posicionMayor]
 }
 
